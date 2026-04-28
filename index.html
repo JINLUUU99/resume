@@ -3,121 +3,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>金璐的个人简历</title>
+    <title>金璐 | 个人简历 | Jin Lu Resume</title>
     <style>
-        /* 页面基础样式 */
-        body, html {
+        :root {
+            --primary-blue: #001f3f;
+            --tech-cyan: #00d2ff;
+            --soft-white: #f8f9fa;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #0066cc, #00ccff);
-            overflow: hidden;
-            color: #fff;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
         }
 
-        /* 背景动效 */
-        .wave {
-            position: absolute;
-            top: 50%;
+        body {
+            background: linear-gradient(-45deg, #001f3f, #003366, #005b96, #001f3f);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--soft-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 蓝色渐变波浪背景 */
+        .wave-container {
+            position: fixed;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.2);
-            animation: waveAnimation 6s infinite;
+            height: 15vh;
+            z-index: -1;
+            opacity: 0.3;
         }
 
-        @keyframes waveAnimation {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+        /* 首页 Hero 区域 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
         }
 
         /* 打字机效果 */
-        .typing {
-            font-size: 24px;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid #fff;
-            width: 0;
-            animation: typing 4s steps(40) 1s forwards, blink 0.75s step-end infinite;
+        .typewriter {
+            font-size: 1.5rem;
+            color: var(--tech-cyan);
+            min-height: 1.6em;
         }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--tech-cyan);
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
         }
 
         @keyframes blink {
-            50% { border-color: transparent; }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
-        /* 头像 */
-        .profile-image {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+        /* 头像区域 */
+        .hero-avatar {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .avatar-frame {
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
-            width: 150px;
-            height: 150px;
+            border: 4px solid var(--tech-cyan);
+            padding: 10px;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+            animation: pulse 3s infinite;
         }
 
-        /* 页面布局 */
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(0, 210, 255, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
+        }
+
+        /* 内容板块 */
         .container {
-            position: relative;
-            padding: 50px;
-            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 100px;
         }
 
-        .content {
+        h2 {
+            border-left: 5px solid var(--tech-cyan);
+            padding-left: 15px;
+            margin: 40px 0 20px;
+            font-size: 1.8rem;
+            color: var(--tech-cyan);
+        }
+
+        .item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .item-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            height: 100vh;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
         }
 
-        .text {
-            max-width: 60%;
+        .item-sub {
+            color: #ccc;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
         }
 
-        .text h1, .text h2, .text p {
-            margin: 10px 0;
+        ul {
+            list-style: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--tech-cyan);
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 100px;
+            }
+            .hero-avatar {
+                margin-bottom: 30px;
+            }
+            .avatar-frame {
+                width: 200px;
+                height: 200px;
+            }
+            .item-header {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 背景波浪 -->
-    <div class="wave"></div>
-    
-    <!-- 页面内容 -->
-    <div class="container">
-        <div class="content">
-            <div class="text">
-                <div class="typing" id="typing"></div>
-                <h2>金璐的个人简历</h2>
-                <p>电话：18260576882 | 邮箱：894327966@qq.com</p>
-                <p>教育经历：清华大学 硕士 | 武汉大学 学士</p>
-                <p>工作经历：某三甲医院、拼多多、联通等</p>
-                <!-- 更多内容可以继续添加 -->
-            </div>
-            <img src="your-avatar.jpg" alt="金璐的头像" class="profile-image">
-        </div>
+
+    <div class="wave-container">
+        <svg viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto" style="width:100%; height:100%">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.1" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.15)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)" />
+            </g>
+        </svg>
     </div>
 
+    <section class="hero">
+        <div class="hero-text">
+            <h1>金璐 | JIN LU</h1>
+            <div class="typewriter" id="typewriter"></div><span class="cursor"></span>
+            <p style="margin-top:20px; opacity: 0.8;">TEL: 18260576882 | Email: 894327966@qq.com</p>
+        </div>
+        <div class="hero-avatar">
+            <div class="avatar-frame">
+                <img src="avatar.jpg" alt="金璐">
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="cn-version">
+            <h2>教育背景</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span>清华大学 - 公共管理 (硕士)</span>
+                    <span>2021.9 - 2024.6</span>
+                </div>
+                <div class="item-sub">GPA: 3.6/4.0 | 主修：卫生经济学、卫生统计学</div>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span>武汉大学 - 公共事业管理 (学士)</span>
+                    <span>2017.9 - 2021.6</span>
+                </div>
+                <div class="item-sub">GPA: 3.7/4.0 | 主修：管理学、西方经济学、组织行为学</div>
+            </div>
+
+            <h2>工作经历</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span>某三甲医院 - 行政管理</span>
+                    <span>2025.12 - 至今</span>
+                </div>
+                <ul>
+                    <li>利用AI辅助开发VBA宏脚本，实现员工考核表批量自动校对与打印，提升效率。</li>
+                    <li>利用AI辅助SQL代码撰写，实现大规模数据比对与定位。</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span>拼多多 (TEMU) - 市场部 用户运营</span>
+                    <span>2025.6 - 2025.11</span>
+                </div>
+                <ul>
+                    <li>负责拉美地区GMV增长，通过A/B实验优化WhatsApp、Push等渠道转化率，单素材提升达40%。</li>
+                    <li>接入RCS与WhatsApp新渠道，驱动该国家GMV提升5%。</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span>中国联通上海分公司 - 市场部 增长运营</span>
+                    <span>2024.8 - 2025.6</span>
+                </div>
+                <ul>
+                    <li>负责出入境客群分析，推动手机卡及支付流程迭代，国际业务收入增长超15%。</li>
+                    <li>协调技术与政企资源，确保机场及营业厅等重点渠道经营目标达成。</li>
+                </ul>
+            </div>
+
+            <h2>技能与语言</h2>
+            <div>
+                <span class="skill-tag">AI+业务落地 (SQL/VBA)</span>
+                <span class="skill-tag">数据分析 (Excel/Python)</span>
+                <span class="skill-tag">英语六级 (550分)</span>
+                <span class="skill-tag">PS / Visio / PPT</span>
+            </div>
+        </section>
+
+        <hr style="margin: 60px 0; border: none; border-top: 1px dashed rgba(255,255,255,0.2);">
+
+        <section id="en-version">
+            <h2>Education</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span>Tsinghua University - MPA</span>
+                    <span>2021.09 - 2024.06</span>
+                </div>
+                <div class="item-sub">GPA: 3.6/4.0 | Focus: Health Economics & Statistics</div>
+            </div>
+
+            <h2>Experience</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span>Top-tier General Hospital - Administration</span>
+                    <span>2025.12 - Present</span>
+                </div>
+                <ul>
+                    <li>Developed VBA macros via AI to automate employee assessment workflows.</li>
+                    <li>Applied SQL for large-scale data auditing and cross-system validation.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span>Pinduoduo (TEMU) - User Growth</span>
+                    <span>2025.06 - 2025.11</span>
+                </div>
+                <ul>
+                    <li>Drove GMV growth in LatAm via A/B testing on WhatsApp and Mail channels.</li>
+                    <li>Successfully integrated RCS/WhatsApp channels, boosting regional GMV by 5%.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span>China Unicom Shanghai - Growth Ops</span>
+                    <span>2024.08 - 2025.06</span>
+                </div>
+                <ul>
+                    <li>Boosted international business revenue by 15% through user profiling.</li>
+                    <li>Coordinated resources across tech and gov sectors for channel optimization.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 金璐 Lu Jin. Powered by AI Technology.</p>
+    </footer>
+
     <script>
-        // JavaScript用于实现打字机效果
-        const text = "Hello! 我是金璐, 欢迎浏览我的简历。";
+        const text = ["行政管理专家", "增长运营专家", "AI 效率赋能者"];
+        let count = 0;
         let index = 0;
+        let currentText = "";
+        let letter = "";
+        let isDeleting = false;
+        const typewriterElement = document.getElementById("typewriter");
 
-        function typeText() {
-            if (index < text.length) {
-                document.getElementById('typing').textContent += text.charAt(index);
-                index++;
-                setTimeout(typeText, 100);
+        (function type() {
+            if (count === text.length) {
+                count = 0;
             }
-        }
+            currentText = text[count];
 
-        typeText(); // 启动打字机效果
+            if (isDeleting) {
+                letter = currentText.slice(0, --index);
+            } else {
+                letter = currentText.slice(0, ++index);
+            }
+
+            typewriterElement.textContent = letter;
+
+            let typeSpeed = 200;
+            if (isDeleting) {
+                typeSpeed /= 2;
+            }
+
+            if (!isDeleting && letter.length === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && letter.length === 0) {
+                isDeleting = false;
+                count++;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }());
     </script>
 </body>
 </html>
