@@ -1,40 +1,264 @@
-<style>
-    /* ... 保持原有样式 ... */
-    .project-preview {
-        margin-top: 15px;
-        width: 100%;
-        max-width: 300px; /* 控制预览图大小 */
-        border-radius: 8px;
-        border: 1px solid var(--accent-light);
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-    .project-preview:hover { transform: scale(1.02); }
-</style>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金璐 | Lu Jin - Personal Resume</title>
+    <style>
+        :root {
+            --bg-base: #f7f8fa;
+            --card-bg: #ffffff;
+            --text-main: #34495e;
+            --text-sub: #7f8c8d;
+            --accent: #95a5a6; 
+            --accent-light: #d5dbdb;
+            --link-blue: #5499c7;
+            --shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
 
-<div class="section-box">
-    <h2>AI 项目作品</h2>
-    <div class="item">
-        <div class="item-header"><span class="title-main">仓颉的写字本</span><span class="date-tag">2026.05</span></div>
-        <div class="item-sub">AI 生成应用 - 灵光 App </div>
-        <ul>
-            <li>利用 AI 图像与文本识别技术，开发集查询、手写识字于一体的生僻字学习工具 。</li>
-        </ul>
-        <a href="https://www.lingguang.com/share/CONTENT-73bd8dc2-b630-4acd-8271-5baa497cd43013?sharemedium=others" target="_blank">
-            <img src="app_writing.jpg" class="project-preview" alt="仓颉的写字本预览">
-        </a>
-        <p style="font-size: 0.8rem; color: var(--text-sub); margin-top: 5px;">↑ 点击或扫码体验 </p>
-    </div>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, "Noto Sans SC", "PingFang SC", sans-serif; }
 
-    <div class="item">
-        <div class="item-header"><span class="title-main">四季植物园</span><span class="date-tag">2026.05</span></div>
-        <div class="item-sub">AI 生成应用 - 灵光 App </div>
-        <ul>
-            <li>构建基于时光流转概念的 AI 养成应用，包含专属植物培育与四季变化体验 。</li>
-        </ul>
-        <a href="https://www.lingguang.com/share/CONTENT-f2ac4300-f433-42c3-95f8-dc0138b3778f13?sharemedium=others" target="_blank">
-            <img src="app_garden.jpg" class="project-preview" alt="四季植物园预览">
-        </a>
-        <p style="font-size: 0.8rem; color: var(--text-sub); margin-top: 5px;">↑ 点击或扫码体验 </p>
-    </div>
-</div>
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* 首页 Hero 区域 */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .avatar-box {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 25px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        h1 { font-size: 2rem; font-weight: 500; margin-bottom: 8px; color: var(--text-main); letter-spacing: 1px; }
+        .typewriter-container { height: 24px; font-size: 1rem; color: var(--text-sub); }
+
+        .skip-btn {
+            margin-top: 50px;
+            padding: 10px 24px;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--text-sub);
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.3s;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .skip-btn:hover { background: var(--text-main); color: #fff; border-color: var(--text-main); }
+
+        /* 简历内容区域 */
+        .resume-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 20px 80px;
+            display: none; 
+        }
+
+        .resume-active { display: block; animation: fadeIn 0.8s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-box {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        h2 { 
+            font-size: 1.25rem; 
+            margin-bottom: 30px; 
+            color: var(--text-main); 
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background: var(--accent);
+            margin-right: 12px;
+            border-radius: 2px;
+        }
+
+        .item { margin-bottom: 35px; position: relative; }
+        .item:last-child { margin-bottom: 0; }
+
+        .item-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: baseline;
+            margin-bottom: 6px; 
+        }
+
+        .title-main { font-size: 1.05rem; font-weight: 600; color: var(--text-main); }
+        .date-tag { font-size: 0.85rem; color: var(--text-sub); }
+        
+        .item-sub { 
+            font-size: 0.9rem; 
+            color: var(--accent); 
+            margin-bottom: 12px; 
+            font-weight: 500;
+        }
+        
+        ul { list-style: none; }
+        li { 
+            margin-bottom: 8px; 
+            position: relative; 
+            padding-left: 18px; 
+            font-size: 0.9rem; 
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+        li::before { 
+            content: ""; 
+            position: absolute; 
+            left: 0; 
+            top: 10px;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-light);
+            border-radius: 50%;
+        }
+
+        .highlight { color: var(--text-main); font-weight: 500; }
+        
+        /* 项目展示图片样式 */
+        .project-preview {
+            display: block;
+            margin: 15px 0;
+            width: 100%;
+            max-width: 280px; 
+            border-radius: 8px;
+            border: 1px solid var(--accent-light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .project-preview:hover { transform: translateY(-3px); }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 5px;
+            color: var(--link-blue);
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-bottom: 1px dashed var(--link-blue);
+        }
+        .project-link:hover { color: var(--text-main); border-bottom-color: var(--text-main); }
+
+        .divider { text-align: center; margin: 60px 0 40px; position: relative; }
+        .divider::after { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: var(--accent-light); z-index: 1; }
+        .divider span { background: var(--bg-base); padding: 0 20px; position: relative; z-index: 2; font-size: 0.75rem; letter-spacing: 3px; color: var(--accent); }
+
+        @media (max-width: 600px) {
+            .item-header { flex-direction: column; }
+            .date-tag { margin-top: 4px; }
+            .section-box { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="hero">
+        <div class="avatar-box">
+            <img src="avatar.jpg" alt="金璐 Lu Jin" onerror="this.style.display='none'">
+        </div>
+        <h1>金璐 | Lu Jin</h1>
+        <div class="typewriter-container" id="typewriter"></div>
+        <button class="skip-btn" onclick="scrollToResume()">VIEW RESUME / 进入简历</button>
+    </section>
+
+    <div class="resume-content" id="main-resume">
+        
+        <div class="section-box">
+            <h2>教育经历</h2>
+            <div class="item">
+                <div class="item-header"><span class="title-main">清华大学 | 公共管理 | 硕士</span><span class="date-tag">2021.09 - 2024.06</span></div>
+                <div class="item-sub">GPA: 3.6/4.0 | 主修：卫生经济学、卫生统计学</div>
+            </div>
+            <div class="item">
+                <div class="item-header"><span class="title-main">武汉大学 | 公共事业管理 | 学士</span><span class="date-tag">2017.09 - 2021.06</span></div>
+                <div class="item-sub">GPA: 3.7/4.0 | 主修：管理学、西方经济学、组织行为学</div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>AI 项目作品</h2>
+            <div class="item">
+                <div class="item-header"><span class="title-main">仓颉的写字本</span><span class="date-tag">2026.05</span></div>
+                <div class="item-sub">AI 生成应用 - 灵光 App</div>
+                <ul>
+                    <li>利用 AI 图像与文本识别技术，开发集查询、手写识字于一体的生僻字学习工具。</li>
+                </ul>
+                <a href="https://www.lingguang.com/share/CONTENT-73bd8dc2-b630-4acd-8271-5baa497cd43013?sharemedium=others" target="_blank">
+                    <img src="app_writing.jpg" class="project-preview" alt="仓颉的写字本预览图">
+                </a>
+                <a href="https://www.lingguang.com/share/CONTENT-73bd8dc2-b630-4acd-8271-5baa497cd43013?sharemedium=others" target="_blank" class="project-link">点击或扫码体验作品 →</a>
+            </div>
+            <div class="item">
+                <div class="item-header"><span class="title-main">四季植物园</span><span class="date-tag">2026.05</span></div>
+                <div class="item-sub">AI 生成应用 - 灵光 App</div>
+                <ul>
+                    <li>构建基于时光流转概念的 AI 养成应用，包含专属植物培育与四季变化体验。</li>
+                </ul>
+                <a href="https://www.lingguang.com/share/CONTENT-f2ac4300-f433-42c3-95f8-dc0138b3778f13?sharemedium=others" target="_blank">
+                    <img src="app_garden.jpg" class="project-preview" alt="四季植物园预览图">
+                </a>
+                <a href="https://www.lingguang.com/share/CONTENT-f2ac4300-f433-42c3-95f8-dc0138b3778f13?sharemedium=others" target="_blank" class="project-link">点击或扫码体验作品 →</a>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>工作经历</h2>
+            <div class="item">
+                <div class="item-header"><span class="title-main">某三甲医院 | 行政管理</span><span class="date-tag">2025.12 - 至今</span></div>
+                <ul>
+                    <li>负责业务数据统计整理。</li>
+                    <li>利用 <span class="highlight">AI 辅助开发 VBA 宏脚本</span>，实现员工考核表自动校对与批量打印。</li>
+                    <li>利用 <span class="highlight">AI 辅助 SQL 代码撰写</span>，实现跨系统数据比对与定位。</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header"><span class="title-main">拼多多 (TEMU) | 市场部 用户运营</span><span class="date-tag">2025.06 - 2025.11</span></div>
+                <ul>
+                    <li>负责拉美地区 GMV 增长。</li>
+                    <li>制定内容触达策略及 A/B 实验，实现单素材产出提升达 <span class="highlight">40%</span>。</li>
+                    <li>完成 RCS、WhatsApp 新渠道接入，驱动该区域 GMV 提升 <span class="highlight">5%</span>。</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header"><span class="title-main">中国联通上海市分公司 | 市场部 增长运营</span><span class="date-tag">2024.08 - 2025.06</span></div>
+                <ul>
+                    <li>分析出入境客群用户画像，推动产品迭代，国际业务收入增长超 <span class="highlight">15%</span>。</li>
+                    <li>协调多部门资源确保重点渠道目标达成。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class
