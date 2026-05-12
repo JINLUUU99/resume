@@ -147,23 +147,43 @@
             border-radius: 50%;
         }
 
+        /* AI 作品卡片布局样式 */
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .ai-card {
+            border: 1px solid var(--accent-light);
+            border-radius: 8px;
+            padding: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .ai-card:hover {
+            border-color: var(--link-blue);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .ai-card-title { font-size: 1rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 8px; }
+        .ai-card-desc { font-size: 0.85rem; color: var(--text-sub); display: block; line-height: 1.5; }
+
         .highlight { color: var(--text-main); font-weight: 500; }
         
         .project-link {
             display: inline-block;
-            margin-top: 5px;
+            margin-top: 12px;
             color: var(--link-blue);
             text-decoration: none;
             font-size: 0.85rem;
             border-bottom: 1px dashed var(--link-blue);
         }
-        .project-link:hover { color: var(--text-main); border-bottom-color: var(--text-main); }
 
         .divider { text-align: center; margin: 60px 0 40px; position: relative; }
         .divider::after { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: var(--accent-light); z-index: 1; }
         .divider span { background: var(--bg-base); padding: 0 20px; position: relative; z-index: 2; font-size: 0.75rem; letter-spacing: 3px; color: var(--accent); }
 
         @media (max-width: 600px) {
+            .ai-grid { grid-template-columns: 1fr; }
             .item-header { flex-direction: column; }
             .date-tag { margin-top: 4px; }
             .section-box { padding: 25px; }
@@ -196,26 +216,6 @@
         </div>
 
         <div class="section-box">
-            <h2>AI 项目作品</h2>
-            <div class="item">
-                <div class="item-header"><span class="title-main">仓颉的写字本</span><span class="date-tag">2026.05</span></div>
-                <div class="item-sub">AI 生成应用 - 灵光 App</div>
-                <ul>
-                    <li>利用 AI 图像与文本识别技术，开发集查询、手写识字于一体的生僻字学习工具。</li>
-                </ul>
-                <a href="https://www.lingguang.com/share/CONTENT-73bd8dc2-b630-4acd-8271-5baa497cd43013?sharemedium=others" target="_blank" class="project-link">查看作品详情 →</a>
-            </div>
-            <div class="item">
-                <div class="item-header"><span class="title-main">四季植物园</span><span class="date-tag">2026.05</span></div>
-                <div class="item-sub">AI 生成应用 - 灵光 App</div>
-                <ul>
-                    <li>构建基于时光流转概念的 AI 养成应用，包含专属植物培育与四季变化体验。</li>
-                </ul>
-                <a href="https://www.lingguang.com/share/CONTENT-f2ac4300-f433-42c3-95f8-dc0138b3778f13?sharemedium=others" target="_blank" class="project-link">查看作品详情 →</a>
-            </div>
-        </div>
-
-        <div class="section-box">
             <h2>工作经历</h2>
             <div class="item">
                 <div class="item-header"><span class="title-main">某三甲医院 | 行政管理</span><span class="date-tag">2025.12 - 至今</span></div>
@@ -239,6 +239,22 @@
                     <li>分析出入境客群，推动产品迭代，国际业务收入增长超 <span class="highlight">15%</span>。</li>
                     <li>协调多部门资源确保重点渠道目标达成。</li>
                 </ul>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>AI 项目作品 / AI Portfolio</h2>
+            <div class="ai-grid">
+                <a href="https://www.lingguang.com/share/CONTENT-73bd8dc2-b630-4acd-8271-5baa497cd43013?sharemedium=others" target="_blank" class="ai-card">
+                    <span class="ai-card-title">✍️ 仓颉的写字本</span>
+                    <span class="ai-card-desc">利用 AI 图像与文本识别技术，开发集查询、手写识字于一体的生僻字学习工具。</span>
+                    <span class="project-link">体验应用 →</span>
+                </a>
+                <a href="https://www.lingguang.com/share/CONTENT-f2ac4300-f433-42c3-95f8-dc0138b3778f13?sharemedium=others" target="_blank" class="ai-card">
+                    <span class="ai-card-title">🌿 四季植物园</span>
+                    <span class="ai-card-desc">构建基于“时光流转”概念的 AI 养成应用，包含专属植物培育与四季变化体验。</span>
+                    <span class="project-link">体验应用 →</span>
+                </a>
             </div>
         </div>
 
