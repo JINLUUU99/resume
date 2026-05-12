@@ -14,12 +14,9 @@
             --accent-light: #d5dbdb;
             --link-blue: #5499c7;
             --shadow: 0 4px 20px rgba(0,0,0,0.04);
-            --shadow-hover: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, "Noto Sans SC", "PingFang SC", sans-serif; }
-
-        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-base);
@@ -27,7 +24,7 @@
             line-height: 1.7;
         }
 
-        /* Hero 区域 */
+        /* 首页 Hero 区域 */
         #hero {
             height: 100vh;
             display: flex;
@@ -36,199 +33,140 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            background: radial-gradient(circle at center, #ffffff 0%, var(--bg-base) 100%);
         }
 
         .avatar-box {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             margin-bottom: 25px;
             border-radius: 50%;
-            border: 4px solid #fff;
+            border: 3px solid #fff;
             box-shadow: var(--shadow);
             overflow: hidden;
-            background: linear-gradient(135deg, #e0e4e7, #bdc3c7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
         }
 
         .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        h1 { font-size: 2.2rem; font-weight: 500; margin-bottom: 12px; color: var(--text-main); letter-spacing: 2px; }
-        
-        .typewriter-container { 
-            height: 24px; 
-            font-size: 1.1rem; 
-            color: var(--text-sub); 
-            display: flex;
-            align-items: center;
-        }
-
-        #typewriter::after {
-            content: "|";
-            margin-left: 2px;
-            color: var(--accent);
-            animation: blink 0.8s infinite;
-        }
-        @keyframes blink { 50% { opacity: 0; } }
+        h1 { font-size: 2rem; font-weight: 500; margin-bottom: 8px; color: var(--text-main); letter-spacing: 1px; }
+        .typewriter-container { height: 24px; font-size: 1rem; color: var(--text-sub); }
 
         .skip-btn {
-            margin-top: 60px;
-            padding: 12px 30px;
+            margin-top: 50px;
+            padding: 10px 24px;
             border: 1px solid var(--accent);
             background: transparent;
             color: var(--text-sub);
             cursor: pointer;
             border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 0.85rem;
-            letter-spacing: 2px;
+            transition: all 0.3s;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
 
-        .skip-btn:hover { 
-            background: var(--text-main); 
-            color: #fff; 
-            border-color: var(--text-main);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+        .skip-btn:hover { background: var(--text-main); color: #fff; border-color: var(--text-main); }
 
         /* 简历内容区域 */
         .resume-content {
-            max-width: 850px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px 100px;
+            padding: 20px 20px 80px;
             display: none; 
         }
 
-        .resume-active { display: block; animation: fadeIn 1s ease forwards; }
+        .resume-active { display: block; animation: fadeIn 0.8s ease; }
 
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(30px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .section-box {
             background: var(--card-bg);
-            padding: 45px;
-            border-radius: 16px;
-            margin-bottom: 35px;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
             box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
         }
 
         h2 { 
-            font-size: 1.3rem; 
-            margin-bottom: 35px; 
+            font-size: 1.25rem; 
+            margin-bottom: 30px; 
             color: var(--text-main); 
             display: flex;
             align-items: center;
-            letter-spacing: 1px;
         }
 
         h2::before {
             content: "";
             display: inline-block;
             width: 4px;
-            height: 20px;
+            height: 18px;
             background: var(--accent);
-            margin-right: 15px;
+            margin-right: 12px;
             border-radius: 2px;
         }
 
-        .item { margin-bottom: 40px; position: relative; }
+        .item { margin-bottom: 35px; position: relative; }
         .item:last-child { margin-bottom: 0; }
 
         .item-header { 
             display: flex; 
             justify-content: space-between; 
             align-items: baseline;
-            margin-bottom: 8px; 
+            margin-bottom: 6px; 
         }
 
-        .title-main { font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
-        .date-tag { font-size: 0.85rem; color: var(--text-sub); font-family: monospace; }
+        .title-main { font-size: 1.05rem; font-weight: 600; color: var(--text-main); }
+        .date-tag { font-size: 0.85rem; color: var(--text-sub); }
         
         .item-sub { 
-            font-size: 0.95rem; 
+            font-size: 0.9rem; 
             color: var(--accent); 
-            margin-bottom: 15px; 
+            margin-bottom: 12px; 
             font-weight: 500;
         }
-
-        /* AI 作品卡片样式 */
-        .ai-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 10px;
-        }
-        .ai-card {
-            border: 1px solid var(--accent-light);
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-        }
-        .ai-card:hover {
-            border-color: var(--link-blue);
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-4px);
-        }
-        .ai-card-title {
-            color: var(--text-main);
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-        .ai-card-desc {
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            margin-bottom: 12px;
-            display: block;
-        }
-
+        
         ul { list-style: none; }
         li { 
-            margin-bottom: 10px; 
+            margin-bottom: 8px; 
             position: relative; 
-            padding-left: 20px; 
-            font-size: 0.92rem; 
+            padding-left: 18px; 
+            font-size: 0.9rem; 
             color: var(--text-sub);
-            line-height: 1.7;
+            line-height: 1.6;
         }
         li::before { 
             content: ""; 
             position: absolute; 
             left: 0; 
             top: 10px;
-            width: 5px;
-            height: 5px;
+            width: 4px;
+            height: 4px;
             background: var(--accent-light);
             border-radius: 50%;
         }
 
-        .highlight { color: var(--text-main); font-weight: 600; border-bottom: 1px solid var(--accent-light); }
+        .highlight { color: var(--text-main); font-weight: 500; }
         
         .project-link {
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 5px;
             color: var(--link-blue);
             text-decoration: none;
             font-size: 0.85rem;
-            font-weight: 500;
+            border-bottom: 1px dashed var(--link-blue);
         }
-        .project-link:hover { text-decoration: underline; }
+        .project-link:hover { color: var(--text-main); border-bottom-color: var(--text-main); }
 
-        .divider { text-align: center; margin: 80px 0 50px; position: relative; }
+        .divider { text-align: center; margin: 60px 0 40px; position: relative; }
         .divider::after { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: var(--accent-light); z-index: 1; }
-        .divider span { background: var(--bg-base); padding: 0 25px; position: relative; z-index: 2; font-size: 0.8rem; letter-spacing: 4px; color: var(--accent); font-weight: bold; }
+        .divider span { background: var(--bg-base); padding: 0 20px; position: relative; z-index: 2; font-size: 0.75rem; letter-spacing: 3px; color: var(--accent); }
 
-        @media (max-width: 768px) {
-            .ai-grid { grid-template-columns: 1fr; }
+        @media (max-width: 600px) {
             .item-header { flex-direction: column; }
-            .date-tag { margin-top: 6px; }
-            .section-box { padding: 30px 20px; }
-            h1 { font-size: 1.8rem; }
+            .date-tag { margin-top: 4px; }
+            .section-box { padding: 25px; }
         }
     </style>
 </head>
@@ -239,83 +177,98 @@
             <img src="avatar.jpg" alt="金璐 Lu Jin" onerror="this.style.display='none'">
         </div>
         <h1>金璐 | Lu Jin</h1>
-        <div class="typewriter-container">
-            <span id="typewriter"></span>
-        </div>
+        <div class="typewriter-container" id="typewriter"></div>
         <button class="skip-btn" onclick="scrollToResume()">VIEW RESUME / 进入简历</button>
     </section>
 
     <div class="resume-content" id="main-resume">
         
         <div class="section-box">
-            <h2>教育经历 / Education</h2>
+            <h2>教育经历</h2>
             <div class="item">
-                <div class="item-header">
-                    <span class="title-main">清华大学 | 公共管理 | 硕士</span>
-                    <span class="date-tag">2021.09 - 2024.06</span>
-                </div>
+                <div class="item-header"><span class="title-main">清华大学 | 公共管理 | 硕士</span><span class="date-tag">2021.09 - 2024.06</span></div>
                 <div class="item-sub">GPA: 3.6/4.0 | 主修：卫生经济学、卫生统计学</div>
             </div>
             <div class="item">
-                <div class="item-header">
-                    <span class="title-main">武汉大学 | 公共事业管理 | 学士</span>
-                    <span class="date-tag">2017.09 - 2021.06</span>
-                </div>
-                <div class="item-sub">GPA: 3.7/4.0 | 优秀毕业生</div>
+                <div class="item-header"><span class="title-main">武汉大学 | 公共事业管理 | 学士</span><span class="date-tag">2017.09 - 2021.06</span></div>
+                <div class="item-sub">GPA: 3.7/4.0 | 主修：管理学、西方经济学、组织行为学</div>
             </div>
         </div>
 
         <div class="section-box">
-            <h2>AI 项目作品 / AI Portfolio</h2>
-            <div class="ai-grid">
-                <a href="https://www.lingguang.com/share/CONTENT-73bd8dc2-b630-4acd-8271-5baa497cd43013?sharemedium=others" target="_blank" class="ai-card">
-                    <span class="ai-card-title">✍️ 仓颉的写字本</span>
-                    <span class="ai-card-desc">利用 AI 图像与文本识别技术，开发集查询、手写识字于一体的生僻字学习工具。</span>
-                    <span class="project-link">体验应用 →</span>
-                </a>
-                <a href="https://www.lingguang.com/share/CONTENT-f2ac4300-f433-42c3-95f8-dc0138b3778f13?sharemedium=others" target="_blank" class="ai-card">
-                    <span class="ai-card-title">🌿 四季植物园</span>
-                    <span class="ai-card-desc">构建基于“时光流转”概念的 AI 养成应用，包含专属植物培育与四季变换体验。</span>
-                    <span class="project-link">体验应用 →</span>
-                </a>
+            <h2>AI 项目作品</h2>
+            <div class="item">
+                <div class="item-header"><span class="title-main">仓颉的写字本</span><span class="date-tag">2026.05</span></div>
+                <div class="item-sub">AI 生成应用 - 灵光 App</div>
+                <ul>
+                    <li>利用 AI 图像与文本识别技术，开发集查询、手写识字于一体的生僻字学习工具。</li>
+                </ul>
+                <a href="https://www.lingguang.com/share/CONTENT-73bd8dc2-b630-4acd-8271-5baa497cd43013?sharemedium=others" target="_blank" class="project-link">查看作品详情 →</a>
+            </div>
+            <div class="item">
+                <div class="item-header"><span class="title-main">四季植物园</span><span class="date-tag">2026.05</span></div>
+                <div class="item-sub">AI 生成应用 - 灵光 App</div>
+                <ul>
+                    <li>构建基于时光流转概念的 AI 养成应用，包含专属植物培育与四季变化体验。</li>
+                </ul>
+                <a href="https://www.lingguang.com/share/CONTENT-f2ac4300-f433-42c3-95f8-dc0138b3778f13?sharemedium=others" target="_blank" class="project-link">查看作品详情 →</a>
             </div>
         </div>
 
         <div class="section-box">
-            <h2>工作经历 / Experience</h2>
+            <h2>工作经历</h2>
             <div class="item">
-                <div class="item-header">
-                    <span class="title-main">顶级三甲医院 | 行政管理</span>
-                    <span class="date-tag">2025.12 - 至今</span>
-                </div>
+                <div class="item-header"><span class="title-main">某三甲医院 | 行政管理</span><span class="date-tag">2025.12 - 至今</span></div>
                 <ul>
-                    <li>利用 <span class="highlight">AI 辅助开发 VBA 宏脚本</span>，实现员工考核表自动校对与批量打印，大幅提升行政效能。</li>
-                    <li>利用 <span class="highlight">AI 辅助 SQL 代码撰写</span>，实现跨系统大规模数据比对，快速精确定位业务异常点。</li>
+                    <li>负责业务数据统计整理。</li>
+                    <li>利用 <span class="highlight">AI 辅助开发 VBA 宏脚本</span>，实现员工考核表自动校对与批量打印。</li>
+                    <li>利用 <span class="highlight">AI 辅助 SQL 代码撰写</span>，实现跨系统数据比对与定位。</li>
                 </ul>
             </div>
             <div class="item">
-                <div class="item-header">
-                    <span class="title-main">拼多多 (TEMU) | 市场部 用户运营</span>
-                    <span class="date-tag">2025.06 - 2025.11</span>
-                </div>
+                <div class="item-header"><span class="title-main">拼多多 (TEMU) | 市场部 用户运营</span><span class="date-tag">2025.06 - 2025.11</span></div>
                 <ul>
-                    <li>聚焦拉美地区 GMV 增长，通过 A/B 实验优化，实现单素材送达单产提升达 <span class="highlight">40%</span>。</li>
-                    <li>成功接入 RCS、WhatsApp 等新沟通渠道，驱动区域整体 GMV 增长 <span class="highlight">5%</span>。</li>
+                    <li>负责拉美地区 GMV 增长。</li>
+                    <li>执行 A/B 实验，实现单素材送达单产提升达 <span class="highlight">40%</span>。</li>
+                    <li>接入 RCS、WhatsApp 新渠道，驱动区域 GMV 提升 <span class="highlight">5%</span>。</li>
                 </ul>
             </div>
             <div class="item">
-                <div class="item-header">
-                    <span class="title-main">中国联通上海市分公司 | 增长运营</span>
-                    <span class="date-tag">2024.08 - 2025.06</span>
-                </div>
+                <div class="item-header"><span class="title-main">中国联通上海市分公司 | 市场部 增长运营</span><span class="date-tag">2024.08 - 2025.06</span></div>
                 <ul>
-                    <li>通过对出入境客群的深度行为分析，推动通信产品迭代，带动国际业务收入增长超 <span class="highlight">15%</span>。</li>
-                    <li>协调多方资源确保重点渠道目标达成，负责产品全生命周期运营管理。</li>
+                    <li>分析出入境客群，推动产品迭代，国际业务收入增长超 <span class="highlight">15%</span>。</li>
+                    <li>协调多部门资源确保重点渠道目标达成。</li>
                 </ul>
             </div>
         </div>
 
-        <div class="divider"><span>END</span></div>
+        <div class="divider"><span>ENGLISH VERSION</span></div>
+
+        <div class="section-box">
+            <h2>Education</h2>
+            <div class="item">
+                <div class="item-header"><span class="title-main">Tsinghua University | Public Administration | Master</span><span class="date-tag">2021.09 - 2024.06</span></div>
+                <div class="item-sub">GPA: 3.6/4.0 | Health Economics, Health Statistics</div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>Work Experience</h2>
+            <div class="item">
+                <div class="item-header"><span class="title-main">Top-tier General Hospital | Administration</span><span class="date-tag">2025.12 - Present</span></div>
+                <ul>
+                    <li>Developed <span class="highlight">AI-assisted VBA macros</span> for automated form auditing.</li>
+                    <li>Utilized <span class="highlight">SQL via AI</span> for large-scale data cross-referencing.</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header"><span class="title-main">TEMU | Marketing / User Growth</span><span class="date-tag">2025.06 - 2025.11</span></div>
+                <ul>
+                    <li>Achieved <span class="highlight">40% gain</span> per creative via A/B testing in LatAm market.</li>
+                    <li>Boosted regional GMV by <span class="highlight">5%</span> via RCS and WhatsApp integration.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -325,44 +278,27 @@
             "流程自动化 / Workflow Automation",
             "AI 玩家 / AI Enthusiast & Player"
         ];
-        
+        let part = "";
         let i = 0;
         let offset = 0;
+        let len = words.length;
         let forwards = true;
-        let skipCount = 0;
-        const skipDelay = 15; // 停留时间
-        const speed = 90; // 打字速度
+        let isStopped = false;
 
-        const typewriter = document.getElementById('typewriter');
-
-        function updateTypewriter() {
+        setInterval(() => {
+            if (isStopped) return;
             if (forwards) {
-                if (offset >= words[i].length) {
-                    skipCount++;
-                    if (skipCount === skipDelay) {
-                        forwards = false;
-                        skipCount = 0;
-                    }
-                }
+                if (offset >= words[i].length) { forwards = false; }
             } else {
-                if (offset <= 0) {
-                    forwards = true;
-                    i = (i + 1) % words.length;
-                }
+                if (offset <= 0) { forwards = true; i = (i + 1) % len; }
             }
-
-            const part = words[i].substr(0, offset);
-            if (skipCount === 0) {
-                if (forwards) offset++;
-                else offset--;
-            }
-            typewriter.innerText = part;
-            setTimeout(updateTypewriter, speed);
-        }
-
-        updateTypewriter();
+            part = words[i].substr(0, offset);
+            document.getElementById('typewriter').innerText = part;
+            offset = forwards ? offset + 1 : offset - 1;
+        }, 110);
 
         function scrollToResume() {
+            isStopped = true;
             document.getElementById('hero').style.display = 'none';
             document.getElementById('main-resume').classList.add('resume-active');
             window.scrollTo(0, 0);
